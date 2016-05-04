@@ -7,8 +7,11 @@
 </head>
 <body ng-app="WordBank" ng-controller="MainCtrl">
 
-<input type="search" ng-model="query">
-<div ng-repeat="term in terms | filter: query | orderBy: orderProp">
+<form ng-submit="addTerm()">
+    <input type="text" ng-model="newEntry">
+    <button type="submit">+</button>
+</form>
+<div ng-repeat="term in terms | orderBy: orderProp">
     {{term.word}} : {{term.definition}}
 </div>
 

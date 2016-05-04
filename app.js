@@ -7,6 +7,8 @@ var app = angular.module("WordBank", []);
 
 app.controller("MainCtrl", ["$scope", function($scope){
     $scope.testVariable = 8;
+    $scope.newEntry = "";
+
     $scope.terms = [
         {"word": "camaraderie", "definition": "comradeship; good-fellowship." },
         {"word": "venison", "definition": "the flesh of a deer or similar animal as used for food."},
@@ -15,4 +17,12 @@ app.controller("MainCtrl", ["$scope", function($scope){
         {"word": "imperative", "definition": "absolutely necessary"}
     ];
     $scope.orderProp = "word";
+
+    $scope.addTerm = function(){
+        if ($scope.newEntry === "" || !$scope.newEntry) {
+            return;
+        }
+        $scope.terms.push({"word": $scope.newEntry, "definition": "its definition"});
+        $scope.newEntry = "";
+    };
 }]);
