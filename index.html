@@ -8,7 +8,8 @@
 <body ng-app="WordBank" ng-controller="MainCtrl">
 
 <form ng-submit="addTerm()">
-    <input type="text" ng-model="newEntry">
+    <input type="text" placeholder="Word" ng-model="newEntry">
+    <input type="text" placeholder="Definition" ng-model="newDefinition">
     <button type="submit">+</button>
 </form>
 <div ng-repeat="term in terms | orderBy: orderProp">
