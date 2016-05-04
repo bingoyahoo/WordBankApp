@@ -6,8 +6,11 @@
     <script src="app.js"></script>
 </head>
 <body ng-app="WordBank" ng-controller="MainCtrl">
-<div>{{5+3}}</div>
-<div>{{testVariable}}</div>
+
+<input type="search" ng-model="query">
+<div ng-repeat="term in terms | filter: query | orderBy: orderProp">
+    {{term.word}} : {{term.definition}}
+</div>
 
 </body>
 </html>
