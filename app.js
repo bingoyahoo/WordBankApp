@@ -1,38 +1,17 @@
-/**
- *
- * Created by delvinlow on 4/5/16.
- */
+"use strict";
 
-var app = angular.module("WordBank", []);
+var express = require("express");
 
-app.factory("words", [function(){
-    var obj = {
-        terms: [
-            {"word": "camaraderie", "definition": "comradeship; good-fellowship." },
-            {"word": "venison", "definition": "the flesh of a deer or similar animal as used for food."},
-            {"word": "assuage", "definition": "to appease; satisfy; allay; relieve"},
-            {"word": "gnarled", "definition": "contorted, distorted"},
-            {"word": "imperative", "definition": "absolutely necessary"}
-        ]
-    };
-    return obj;
-}]);
+var app = express();
 
-app.controller("MainCtrl", ["$scope", "words", function($scope, words){
-    $scope.testVariable = 8;
-    $scope.newEntry = "";
-    $scope.newDefinition = "";
+app.use(express.static(__dirname + '/public'));
 
-    $scope.terms = words.terms;
-    $scope.orderProp = "word";
 
-    $scope.addTerm = function(){
-        if ($scope.newEntry === "" || !$scope.newEntry ||$scope.newDefinition === "" || !$scope.newDefinition) {
-            return;
-        }
-        $scope.terms.push({"word": $scope.newEntry, "definition": $scope.newDefinition});
-        $scope.newEntry = "";
-        $scope.newDefinition = "";
-    };
-}]);
+// app.get("/", function(request, response){
+// 	response.sendFile(__dirname + "/public/index.html");
 
+// });
+
+app.listen(3000, function(){
+	console.log("Listening on port 3000");
+});
